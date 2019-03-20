@@ -11,20 +11,20 @@ class Display
     end
 
     def render
-        color = :red
+        color = :black
         
         (0..7).each do |row|
             inner = []
             (0..7).each do |col|
                 if cursor.cursor_pos == [row, col]
                     inner << board[[row, col]].name.colorize(background: :blue)
-                else board[[row, col]] != nil 
+                else 
                     inner << board[[row, col]].name.colorize(background: color)
                 end
-                color = color == :red ? :green : :red
+                color = color == :black ? :grey : :black
             end
-            puts inner.join(' ')
-            color = color == :red ? :green : :red
+            puts inner.join('')
+            color = color == :black ? :grey : :black
         end
     end
 

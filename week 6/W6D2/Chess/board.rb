@@ -6,10 +6,12 @@ class Board
         new_board = Array.new(8) {Array.new(8)}
         (0..7).each do |row|
             (0..7).each do |col|
-                if row < 2 || row > 5
-                    new_board[row][col] = Piece.new('piece')
+                if row < 2  
+                    new_board[row][col] = Piece.new('  ♕  ')
+                elsif row > 5
+                    new_board[row][col] = Piece.new('  ♛  ') 
                 else
-                    new_board[row][col] = NullPiece.new("null")
+                    new_board[row][col] = NullPiece.instance
                 end
 
             end
@@ -31,7 +33,7 @@ class Board
             raise "Not a valid end position"
         end
         self[end_pos] = self[start_pos]
-        self[start_pos] = NullPiece.new("null")
+        self[start_pos] = NullPiece.instance
         
     end
     

@@ -81,7 +81,6 @@ class Cursor
       Process.exit(0)
     when :left, :right, :up, :down
       update_pos(MOVES[key])
-      p 'it worked!'
       return nil
     when :return, :space
       return @cursor_pos
@@ -102,8 +101,6 @@ class Cursor
      pos = [ @cursor_pos[0] + diff[0], @cursor_pos[1] + diff[1] ]
     if @board.valid_pos?(pos)
       @cursor_pos = pos
-    else
-      raise "Not a valid move position"
     end
   end
 end
