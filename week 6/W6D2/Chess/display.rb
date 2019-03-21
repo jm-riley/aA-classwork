@@ -17,9 +17,9 @@ class Display
             inner = []
             (0..7).each do |col|
                 if cursor.cursor_pos == [row, col]
-                    inner << board[[row, col]].name.colorize(background: :blue)
+                    inner << board[[row, col]].symbol.colorize(background: :blue)
                 else 
-                    inner << board[[row, col]].name.colorize(background: color)
+                    inner << board[[row, col]].symbol.colorize(background: color)
                 end
                 color = color == :black ? :grey : :black
             end
@@ -46,4 +46,6 @@ end
 #       puts "#{i} #{row.join(' ')}"
 #     end
 #   end
-
+# load 'display.rb'
+# disp = Display.new
+# disp.play

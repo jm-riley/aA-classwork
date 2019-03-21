@@ -34,8 +34,8 @@ module Slideable
         pos = @pos
         until occupied
             occupied = true
-            new_pos = [ pos[0] + dx, pos[1] + dy ]
-            if @board[[new_pos]].is_a?(NullPiece) && @board.valid_pos(new_pos)
+            new_pos = [ pos[0] += dx, pos[1] += dy ]
+            if @board.valid_pos?(new_pos) && @board[new_pos].is_a?(NullPiece) 
                 occupied = false
                 possible_moves << new_pos
             end

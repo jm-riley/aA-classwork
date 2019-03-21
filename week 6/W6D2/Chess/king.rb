@@ -1,11 +1,11 @@
 require_relative 'stepable'
 require_relative 'piece'
 
-class King
+class King < Piece
     include Stepable
 
     def symbol
-        '♔'.colorize(color)
+        '  ♔  '.colorize(color)
     end
 
     def move_diffs

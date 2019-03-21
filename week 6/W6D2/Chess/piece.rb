@@ -1,8 +1,9 @@
 require 'singleton'
-
+require 'colorize'
 
 class Piece
-    attr_reader :board, :color, :pos, :name
+    attr_reader :board, :color, :name
+    attr_accessor :pos
     def initialize(color,board,pos)
         @color = color
         @board = board
@@ -10,16 +11,20 @@ class Piece
         
     end
 
-    def initialize(name)
-        @name = name
+    # def initialize(name)
+    #     @name = name
+    # end
+
+    def symbol
+        '  ♕  '.colorize(color)
     end
 
     def to_s
-
+        self.symbol
     end
 
     def empty?
-
+        false
     end
 
     def valid_moves
@@ -28,10 +33,6 @@ class Piece
 
     def pos=(pos)
         @pos = pos
-    end
-
-    def symbol
-
     end
 
     def move_into_check?(end_pos)
@@ -45,10 +46,19 @@ end
 class NullPiece < Piece
     include Singleton
     def initialize()
-        @name = "     "
+        
     end
 
-    def inspect
-        @name
+    def symbol
+        "     "
     end
+
+    def moves
+        []
+    end
+
+    def empty?
+        true
+    end
+
 end
