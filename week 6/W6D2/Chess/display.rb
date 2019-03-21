@@ -4,8 +4,8 @@ require 'colorize'
 
 class Display
     attr_reader :cursor, :board
-    def initialize
-        @board = Board.new
+    def initialize(board=Board.new)
+        @board = board
         @cursor = Cursor.new([0,0], @board)
         
     end
@@ -17,7 +17,7 @@ class Display
             inner = []
             (0..7).each do |col|
                 if cursor.cursor_pos == [row, col]
-                    inner << board[[row, col]].symbol.colorize(background: :blue)
+                    inner << board[[row, col]].symbol.colorize(background: :light_black)
                 else 
                     inner << board[[row, col]].symbol.colorize(background: color)
                 end
@@ -49,3 +49,21 @@ end
 # load 'display.rb'
 # disp = Display.new
 # disp.play
+
+# > [:black,
+#  :light_black,
+#  :red,
+#  :light_red,
+#  :green,
+#  :light_green,
+#  :yellow,
+#  :light_yellow,
+#  :blue,
+#  :light_blue,
+#  :magenta,
+#  :light_magenta,
+#  :cyan,
+#  :light_cyan,
+#  :white,
+#  :light_white,
+#  :default]

@@ -8,7 +8,6 @@ class Piece
         @color = color
         @board = board
         @pos = pos
-        
     end
 
     # def initialize(name)
@@ -28,7 +27,7 @@ class Piece
     end
 
     def valid_moves
-
+        moves.select { |move| !move_into_check?(move) }
     end
 
     def pos=(pos)
@@ -36,7 +35,9 @@ class Piece
     end
 
     def move_into_check?(end_pos)
-
+        dupe = @board.dupe
+        dupe.move_piece!(pos, end_pos)
+        dupe.in_check?(color)
     end
 
 end
