@@ -110,7 +110,7 @@ class Board
     def in_check?(color)
         king_pos = find_king(color)
         @rows.flatten.each do |piece|
-            next if piece.is_a?(NullPiece) || piece.is_a?(Pawn)
+            next if piece.is_a?(NullPiece)
             # debugger
             return true if piece.moves.include?(king_pos) && piece.color != color
         end
@@ -130,11 +130,10 @@ class Board
 
     def checkmate?(color)
         return false unless in_check?(color)
-        king_pos = find_king(color)
-        @rows[king_pos[0]][king_pos[1]].moves.each do |pos|
-            return false unless in_check_at_pos?(color, pos)
+        pieces = @rows.flatten.select { |piece| piece.color == color}
+        pieces.all? do |piece|
+            piece.valid_moves.empty?
         end
-        true
     end
 
     def find_king(color)

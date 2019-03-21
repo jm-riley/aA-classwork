@@ -11,6 +11,7 @@ class Display
     end
 
     def render
+        system("clear")
         color = :black
         
         (0..7).each do |row|
