@@ -57,16 +57,10 @@ class HumanPlayer
 
     
     def make_move
-        # start_pos = nil
-        # until start_pos
-        #     start_pos = @display.cursor.get_input
-        # end
-        # end_pos
-        # until end_pos
-        #     end_pos = @display.cursor.get_input
-        # end
-        # @board.move_piece(start_pos, end_pos)
         @display.cursor.get_input
     end
 
 end
+
+game = Game.new
+game.play
