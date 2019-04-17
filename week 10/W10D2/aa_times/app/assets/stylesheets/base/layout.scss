@@ -6,26 +6,30 @@ html {
 }
 
 body {
-	// ...
+	width: 80%;
+	margin: 0 auto;
+	font-family: $serif;
+	font-size: 12px;
 }
 
 button {
-	// background-color:
-	// border-color:
-	// color:
-	// font-weight:
-	// padding:
-	// border-radius:
-	// transition:
-	// font-family:
-	// text-transform:
-	// font-size:
-	// text-align:
+	background-color: #6288a5;
+	border: 1px solid;
+	border-color: #326891;
+	color: white;
+	font-weight: 700;
+	padding: 8px;
+	border-radius: 5px;
+	transition: .25s;
+	font-family: $sans-serif;
+	text-transform: uppercase;
+	font-size: 12px;
+	text-align: center;
 }
 
-button:hover {
-	// background-color:
-	// border-color:
+button:hover { 
+	background-color: #336e9b;
+	border-color:  #034e88;
 }
 
 /*
@@ -46,4 +50,8 @@ hr {
 .hr-top {
 	height: 2px;
 	margin-bottom: 1px;
+}
+
+.hidden {
+	display: none;
 }
