@@ -18,8 +18,8 @@ class Route
   def run(req, res)
     self.matches?(req)
     match_data = @pattern.match(req.path)
-    debugger
-    route_params = {match_data.names => match_data.captures}
+    # debugger
+    route_params = Hash[match_data.names.zip(match_data.captures)]
     controller = @controller_class.new(req, res, route_params)
     controller.invoke_action(@action_name)
   end
