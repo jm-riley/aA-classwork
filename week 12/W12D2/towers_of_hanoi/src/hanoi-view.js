@@ -38,11 +38,23 @@ class View {
             this.fromTower = $tower
             // debugger
         } else {
-            this.game.move(this.fromTower.index(), $tower.index());
+            if (this.game.move(this.fromTower.index(), $tower.index())) {
+                const $from = $(this.fromTower)[0];
+                const $top = $($from.firstChild);
+                ($top).remove();
+                ($tower).prepend($top);
+                // debugger
 
+                this.fromTower = null;
+            } else {
+                alert("invalid move");
+            }
+        }
 
-            debugger
-            this.fromTower = null;
+        if (this.game.isWon()) {
+            let $h1 = $('<h1>').text("You Win!");
+            const $body = $('body');
+            $body.append($h1);
         }
         // debugger
     }
