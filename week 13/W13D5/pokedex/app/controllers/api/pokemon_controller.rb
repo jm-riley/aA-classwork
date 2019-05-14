@@ -15,7 +15,7 @@ class Api::PokemonController < ApplicationController
     if @pokemon.save
       render :show
     else
-      render @pokemon.errors.full_messages
+      render json: @pokemon.errors.full_messages, status: 422
     end
   end
 
