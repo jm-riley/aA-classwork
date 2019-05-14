@@ -1,6 +1,7 @@
 import React from "react"
 import { Route, Link } from "react-router-dom"
 import ItemDetailContainer from "./item_detail_container"
+import LoadingSpinner from "../loading_spinner"
 
 class PokemonDetail extends React.Component {
   constructor(props) {
@@ -21,6 +22,10 @@ class PokemonDetail extends React.Component {
     const { items, pokemon } = this.props
     if (!items) return null
     // debugger
+    let spinner
+    if (this.props.loading) {
+      spinner = <LoadingSpinner />
+    }
     let itemList = items.map((item, i) => {
       return (
         <Link to={`/pokemon/${pokemon.id}/items/${item.id}`} key={item.name}>
@@ -58,6 +63,7 @@ class PokemonDetail extends React.Component {
 
     return (
       <div className="pokemon-detail-container">
+        {spinner}
         {pokeInfo}
         <div className="item-container">
           <div className="item-images">{itemList}</div>

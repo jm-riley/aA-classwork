@@ -23,25 +23,27 @@ export const receivePokemonErrors = errors => {
   }
 }
 
-// const startLoadingAllPokemon = () => ({
-//   type: START_LOADING_ALL_POKEMON
-// })
+const startLoadingAllPokemon = () => ({
+  type: START_LOADING_ALL_POKEMON
+})
 
-// const startLoadingSinglePokemon = () => ({
-//   type: START_LOADING_SINGLE_POKEMON
-// })
+const startLoadingSinglePokemon = () => ({
+  type: START_LOADING_SINGLE_POKEMON
+})
 
-export const requestAllPokemon = () => dispatch =>
-  // dispatch(startLoadingAllPokemon())
-  APIUtil.fetchAllPokemon().then(pokemon =>
+export const requestAllPokemon = () => dispatch => {
+  dispatch(startLoadingAllPokemon())
+  return APIUtil.fetchAllPokemon().then(pokemon =>
     dispatch(receiveAllPokemon(pokemon))
   )
+}
 
-export const requestSinglePokemon = id => dispatch =>
-  // dispatch(startLoadingSinglePokemon())
-  APIUtil.fetchPokemonById(id).then(pokemon =>
+export const requestSinglePokemon = id => dispatch => {
+  dispatch(startLoadingSinglePokemon())
+  return APIUtil.fetchPokemonById(id).then(pokemon =>
     dispatch(receivePokemon(pokemon))
   )
+}
 
 export const createPokemon = pokemon => dispatch =>
   APIUtil.sendPokemonInfo(pokemon).then(
