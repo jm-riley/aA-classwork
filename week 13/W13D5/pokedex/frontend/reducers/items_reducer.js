@@ -6,7 +6,7 @@ const itemsReducer = (state = {}, action) => {
     case RECEIVE_POKEMON:
       // debugger
       let items = action.pokemon.items
-      return merge({}, state, items)
+      return items
     default:
       return state
   }

@@ -8,7 +8,7 @@ const mstp = state => ({
 })
 
 const mdtp = dispatch => ({
-  requestAllPokemon: dispatch(requestAllPokemon())
+  requestAllPokemon: () => dispatch(requestAllPokemon())
 })
 
 export default connect(mstp, mdtp)(PokemonIndex)
